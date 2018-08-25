@@ -2,9 +2,12 @@ class ExpensesController < ApplicationController
 	before_action :authenticate_user!	
 
 	  def index
-	  	 user = User.find(current_user.id)
-	     @expenses = Expense.order("date DESC")
-        	# @expenses = Expense.order("date DESC")
+
+		user = User.find(current_user.id)
+	    @expenses = user.expenses.order("date DESC")
+
+
+	# @expenses = Expense.order("date DESC")
 
 
 	        if (params[:concept].present?)
